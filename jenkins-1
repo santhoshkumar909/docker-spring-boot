@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Build your project, for example, using Maven
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    // Define SonarQube scanner properties
+                    def scannerHome = tool 'SonarQube-Server'; // Make sure you have SonarQube Scanner configured in Jenkins under Manage Jenkins > Global Tool Configuration
+                    def projectKey = 'honda-test-demo';
+                    def projectName = 'honda-test-demo';
+                    def sonarQubeServerUrl = 'http://3.109.183.53:9000'; // Replace with your SonarQube server URL
+
+                    // Run SonarQube analysis
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${projectKey} -Dsonar.projectName=${projectName} -Dsonar.host.url=${sonarQubeServerUrl}"
+                }
+            }
+        }
+    }
+}
