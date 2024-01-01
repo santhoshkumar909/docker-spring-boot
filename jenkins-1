@@ -21,7 +21,7 @@ pipeline {
 
 
                     // Run SonarQube analysis
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${projectKey} -Dsonar.projectName=${projectName} -Dsonar.host.url=${sonarQubeServerUrl} --Dsonar.login=${sonarQubeLogin}"
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${projectKey} -Dsonar.projectName=${projectName} -Dsonar.host.url=${sonarQubeServerUrl} -Dsonar.login=${sonarQubeLogin}"
                 }
             }
         }
