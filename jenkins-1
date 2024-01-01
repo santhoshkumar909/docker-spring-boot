@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Define SonarQube scanner properties
-                    def scannerHome = tool 'SonarQube-Server'; // Make sure you have SonarQube Scanner configured in Jenkins under Manage Jenkins > Global Tool Configuration
+                    def scannerHome = tool 'SonarQube'; // Make sure you have SonarQube Scanner configured in Jenkins under Manage Jenkins > Global Tool Configuration
                     def projectKey = 'honda-test-demo';
                     def projectName = 'honda-test-demo';
                     def sonarQubeServerUrl = 'http://3.109.183.53:9000'; // Replace with your SonarQube server URL
